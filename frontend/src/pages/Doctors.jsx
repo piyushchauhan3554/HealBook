@@ -22,7 +22,7 @@ const Doctors = () => {
   },[speciality, doctors])
 
 
-  return (
+  return doctors && (
     <div>
       <p className='text-gray-600'>Browse through the doctors specialist.</p>
       <div className='flex flex-col sm:flex-row items-start gap-5 mt-5'>
