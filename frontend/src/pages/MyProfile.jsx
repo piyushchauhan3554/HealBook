@@ -79,8 +79,11 @@ const MyProfile = () => {
       <div className='grid grid-cols-[1fr_3fr] gap-y-2.5 mt-3 text-neutral-700'>
         <p className='font-medium'>Gender:</p>
         {
-          isEdit ? <select className='max-w-20 bg-gray-100' onChange={(e)=>setUserData(prev=>({...prev,gender:e.target.value}))} value={userData.gender}><option value="Male">Male</option>
-          <option value="Female">Female</option></select> : <p className='text-gray-400'>{userData.gender}</p>
+          isEdit ? <select className='max-w-20 bg-gray-100' onChange={(e)=>setUserData(prev=>({...prev,gender:e.target.value}))} value={userData.gender}>
+            <option value="Not Selected">Not Selected</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select> : <p className='text-gray-400'>{userData.gender}</p>
         }
         <p className='font-medium'>BirthDay</p>
         {

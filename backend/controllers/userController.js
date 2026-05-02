@@ -150,21 +150,23 @@ const updateProfile = async (req, res) => {
       });
     }
 
-    await users.findByIdAndUpdate(userId, {
+    const updateData = {
       name,
       dob,
       gender,
       phone,
       address: JSON.parse(address),
-    });
+    };
+
     if (imageFile) {
       const imageUpload = await cloudinary.uploader.upload(imageFile.path, {
         resource_type: "image",
       });
-      const imgUrl = imageUpload.secure_url;
-
-      await users.findByIdAndUpdate(userId, { image: imgUrl });
+      updateData.image = imageUpload.secure_url;
     }
+
+    await users.findByIdAndUpdate(userId, updateData);
+
     res.json({
       success: true,
       message: "Profile Updated",
@@ -251,4 +253,26 @@ const bookAppointment= async(req,res)=>{
   }
 }
 
-export { userRegister, userLogin, getProfile, updateProfile ,bookAppointment};
+// api to get user's appointment
+
+const listAppointment= async(req,res)=>{
+  try {
+    const {userId}=req;
+    const appointments=await (await appointment.find({userId})).reverse()
+    res.json(
+      {
+        success:true,
+        appointments
+      }
+    )
+  } catch (error) {
+    console.log(error);
+    res.json({
+      success:false,
+      message:error.message
+    })
+  }
+
+}
+
+export { userRegister, userLogin, getProfile, updateProfile ,bookAppointment,listAppointment};
