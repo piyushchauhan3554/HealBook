@@ -31,4 +31,5 @@ const getAllDoctors= async(req,res)=>{
         })
     }
 }
+
 export {changeAvailablity,getAllDoctors}
