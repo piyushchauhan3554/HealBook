@@ -1,6 +1,6 @@
 import validator from "validator"
 import bcrypt from "bcrypt"
-import cloudinary from "cloudinary"
+import { v2 as cloudinary } from "cloudinary"
 import doctorModel from '../models/doctorModel.js'
 import jwt from 'jsonwebtoken'
 import appointment from "../models/appointmentModel.js"
@@ -16,6 +16,11 @@ const addDoctor = async (req, res) => {
         ) {
             return res.json({ success: false, message: "Missing Details" })
         }
+
+        if (!imageFile) {
+            return res.json({ success: false, message: "Image not Selected" })
+        }
+
 
         //  validate email
 

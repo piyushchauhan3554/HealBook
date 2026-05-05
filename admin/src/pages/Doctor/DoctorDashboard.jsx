@@ -1,33 +1,30 @@
-import React from "react";
 import { useContext } from "react";
-import { AdminContext } from "../../context/AdminContext";
+import { DoctorContext } from "../../context/DoctorContext";
 import { useEffect } from "react";
 import { assets } from "../../assets/assets_admin/assets";
 import { AppContext } from "../../context/AppContext";
 
-const Dashboard = () => {
-  const { aToken, getDashData, dashData, cancelAppointment } =
-    useContext(AdminContext);
-  const { changeDateFormat } = useContext(AppContext);
-
+const DoctorDashboard = () => {
+  const { getDashboardData, dashData, dToken ,completeAppointment,cancelAppointment} = useContext(DoctorContext);
+  const { currency, changeDateFormat } = useContext(AppContext);
   useEffect(() => {
-    if (aToken) {
-      getDashData();
+    if (dToken) {
+      getDashboardData();
     }
-  }, [aToken]);
+  }, [dToken]);
 
   return (
     dashData && (
       <div className="m-5">
         <div className="flex flex-wrap gap-3">
           <div className="flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all">
-            <img className="w-14" src={assets.doctor_icon} alt="" />
+            <img className="w-14" src={assets.earning_icon} alt="" />
             <div>
               <p className="text-xl font-semibold text-gray-600">
-                {dashData.doc}
+                {currency}
+                {dashData.earnings}
               </p>
-              <p className="text-gray-400">Doctors</p>
-              <p></p>
+              <p className="text-gray-400">Earnings</p>
             </div>
           </div>
 
@@ -35,7 +32,7 @@ const Dashboard = () => {
             <img className="w-14" src={assets.appointments_icon} alt="" />
             <div>
               <p className="text-xl font-semibold text-gray-600">
-                {dashData.app}
+                {dashData.totalAppointments}
               </p>
               <p className="text-gray-400">Appointments</p>
             </div>
@@ -45,7 +42,7 @@ const Dashboard = () => {
             <img className="w-14" src={assets.patients_icon} alt="" />
             <div>
               <p className="text-xl font-semibold text-gray-600">
-                {dashData.patients}
+                {dashData.totalPatients}
               </p>
               <p className="text-gray-400">Patients</p>
             </div>
@@ -66,30 +63,38 @@ const Dashboard = () => {
               >
                 <img
                   className="rounded-full w-10 h-10 object-cover"
-                  src={item.docData.image}
+                  src={item.userData.image}
                   alt=""
                 />
                 <div className="flex-1 text-sm">
                   <p className="text-gray-800 font-medium">
-                    {item.docData.name}
+                    {item.userData.name}
                   </p>
                   <p className="text-gray-600">
                     {changeDateFormat(item.slotDate)}
                   </p>
                 </div>
                 {item.cancelled ? (
-                  <p className="text-red-400 text-xs font-medium">Cancelled</p>
+                  <p className="text-red-500 text-xs font-medium">Cancelled</p>
                 ) : item.isCompleted ? (
-                  <p className="text-green-400 text-xs font-medium">
+                  <p className="text-green-500 text-xs font-medium">
                     Completed
                   </p>
                 ) : (
-                  <img
-                    onClick={() => cancelAppointment(item._id)}
-                    className="cursor-pointer"
-                    src={assets.cancel_icon}
-                    alt=""
-                  />
+                  <div className="flex items-center">
+                    <img
+                      onClick={() => cancelAppointment(item._id)}
+                      className="w-10 cursor-pointer"
+                      src={assets.cancel_icon}
+                      alt=""
+                    />
+                    <img
+                      onClick={() => completeAppointment(item._id)}
+                      className="w-10 cursor-pointer"
+                      src={assets.tick_icon}
+                      alt=""
+                    />
+                  </div>
                 )}
               </div>
             ))}
@@ -100,4 +105,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DoctorDashboard;

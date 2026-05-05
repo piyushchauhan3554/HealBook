@@ -128,7 +128,7 @@ const MyAppointments = () => {
           appointments.map((item,index)=>(
             <div className='grid grid-cols-[1fr_2fr] gap-4 sm:flex sm:gap-6 py-2 border-b' key={index}>
               <div>
-                <img className='w-32 bg-indigo-50' src={item.docData.image} alt="" />
+                <img className='w-32 h-32 bg-indigo-50 object-cover' src={item.docData.image} alt="" />
               </div>
               <div className='flex-1 text-sm text-zinc-600'>
                 <p className='text-neutral-800 font-semibold'>{item.docData.name}</p>
@@ -142,7 +142,9 @@ const MyAppointments = () => {
               <div></div>
               <div className='flex flex-col gap-2 justify-end'>
                 {item.cancelled ? (
-                  <button className='text-sm text-red-500 font-medium border border-red-500 rounded px-4 py-2'>Appointment Cancelled</button>
+                  <button className='sm:min-w-48 py-2 border border-red-500 rounded text-red-500 font-medium'>Appointment Cancelled</button>
+                ) : item.isCompleted ? (
+                  <button className='sm:min-w-48 py-2 border border-green-500 rounded text-green-500 font-medium'>Completed</button>
                 ) : item.payment ? (
                   <>
                     <button className='sm:min-w-48 py-2 border rounded text-green-600 bg-green-50 font-medium'>Payment Completed</button>
@@ -150,11 +152,12 @@ const MyAppointments = () => {
                   </>
                 ) : (
                   <>
-                    <button onClick={()=>appointmentRazorpay(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer'>Pay Online</button>
+                    <button onClick={() => appointmentRazorpay(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer'>Pay Online</button>
                     <button onClick={() => cancelAppointment(item._id)} className='text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:bg-red-500 hover:text-white transition-all duration-300 cursor-pointer'>Cancel Appointment</button>
                   </>
                 )}
               </div>
+
             </div>
           ))
         }
