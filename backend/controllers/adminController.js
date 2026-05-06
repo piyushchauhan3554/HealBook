@@ -39,9 +39,13 @@ const addDoctor = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, salt)
         
         // upload image on cloudinary and get url 
-
-        const imageUpload = await cloudinary.uploader.upload(imageFile.path, { resource_type: "image" })
+        
+        const imageUpload = await cloudinary.uploader.upload(imageFile.path, { 
+            resource_type: "image",
+            timeout: 60000 
+        })
         const imageUrl = imageUpload.secure_url;
+        
 
         const newDoctor = new doctorModel({
             name,
