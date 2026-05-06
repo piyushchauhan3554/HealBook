@@ -1,4 +1,3 @@
-import React from 'react'
 import { assets } from '../assets/assets_frontend/assets'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
@@ -28,7 +27,7 @@ const Banner = () => {
                     className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tighter'
                 >
                     <p>Book Appointment</p>
-                    <p className='mt-2 text-white/70'>With 100+ Trusted Doctors</p>
+                    <p className='mt-2 text-white/70'>With Trusted Doctors</p>
                 </motion.div>
                 <motion.button 
                     whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.1)" }}

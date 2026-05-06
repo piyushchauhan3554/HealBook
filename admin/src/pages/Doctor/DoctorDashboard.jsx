@@ -48,52 +48,43 @@ const DoctorDashboard = () => {
           {/* Earnings Card */}
           <motion.div variants={itemAnim} className="bg-white rounded-[2rem] p-8 shadow-premium border border-slate-100 group hover:-translate-y-2 transition-all duration-500">
             <div className="flex items-center justify-between mb-6">
-              <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
-                <img className="w-6 group-hover:brightness-0 group-hover:invert transition-all" src={assets.earning_icon} alt="" />
+              <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center transition-all duration-500">
+                <img className="w-6 transition-all" src={assets.earning_icon} alt="" />
               </div>
-              <div className="text-right">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Revenue</p>
-                <div className="flex items-center justify-end gap-1 text-emerald-500 font-bold text-xs mt-1">
-                  <span>+12.5%</span>
-                </div>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-slate-900 tracking-tight">{currency}{dashData.earnings}</p>
+                <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Earnings</p>
               </div>
             </div>
-            <p className="text-3xl font-bold text-slate-900 tracking-tight">{currency}{dashData.earnings}</p>
-            <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Earnings</p>
+            
           </motion.div>
 
           {/* Appointments Card */}
           <motion.div variants={itemAnim} className="bg-white rounded-[2rem] p-8 shadow-premium border border-slate-100 group hover:-translate-y-2 transition-all duration-500">
             <div className="flex items-center justify-between mb-6">
-              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500">
-                <img className="w-6 group-hover:brightness-0 group-hover:invert transition-all" src={assets.appointments_icon} alt="" />
+              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center transition-all duration-500">
+                <img className="w-6 transition-all" src={assets.appointments_icon} alt="" />
               </div>
-              <div className="text-right">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Bookings</p>
-                <div className="flex items-center justify-end gap-1 text-primary font-bold text-xs mt-1">
-                  <span>+5 Today</span>
-                </div>
+              <div className="text-center">
+                <p className="text-3xl font-bold text-slate-900 tracking-tight">{dashData.totalAppointments}</p>
+                <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Appointments</p>
+  
               </div>
             </div>
-            <p className="text-3xl font-bold text-slate-900 tracking-tight">{dashData.totalAppointments}</p>
-            <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Appointments</p>
-          </motion.div>
+                    </motion.div>
 
           {/* Patients Card */}
           <motion.div variants={itemAnim} className="bg-white rounded-[2rem] p-8 shadow-premium border border-slate-100 group hover:-translate-y-2 transition-all duration-500">
             <div className="flex items-center justify-between mb-6">
-              <div className="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition-all duration-500">
-                <img className="w-6 group-hover:brightness-0 group-hover:invert transition-all" src={assets.patients_icon} alt="" />
+              <div className="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center transition-all duration-500">
+                <img className="w-6  transition-all" src={assets.patients_icon} alt="" />
               </div>
-              <div className="text-right">
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Base</p>
-                <div className="flex items-center justify-end gap-1 text-rose-500 font-bold text-xs mt-1">
-                  <span>Registered</span>
-                </div>
+              <div className="text-center">
+                 <p className="text-3xl font-bold text-slate-900 tracking-tight">{dashData.totalPatients}</p>
+                  <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Patients</p>
               </div>
             </div>
-            <p className="text-3xl font-bold text-slate-900 tracking-tight">{dashData.totalPatients}</p>
-            <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Patients</p>
+           
           </motion.div>
         </motion.div>
 
@@ -111,8 +102,7 @@ const DoctorDashboard = () => {
               </div>
               <h2 className="text-lg font-bold text-slate-900 tracking-tight">Latest Bookings</h2>
             </div>
-            <button className="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline cursor-pointer">View All</button>
-          </div>
+            </div>
 
           <div className="px-4 py-2">
             {dashData.latestAppointments.map((item, index) => (

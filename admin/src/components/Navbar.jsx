@@ -23,7 +23,7 @@ const Navbar = () => {
             <div className="flex items-center gap-3">
                 <motion.img 
                   whileHover={{ scale: 1.02 }}
-                  className="cursor-pointer w-36 sm:w-40" 
+                  className="cursor-pointer w-50 sm:w-56" 
                   src={assets.admin_logo}
                   onClick={() => navigate(aToken ? '/admin-dashboard' : '/doctor-dashboard')}
                 />
@@ -43,4 +43,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar
+export default Navbar

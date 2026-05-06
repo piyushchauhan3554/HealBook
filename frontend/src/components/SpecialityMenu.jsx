@@ -45,7 +45,7 @@ const SpecialityMenu = () => {
                       >
                         <div className='w-24 h-24 sm:w-32 sm:h-32 bg-white rounded-3xl flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-500 shadow-sm border border-slate-100 group-hover:border-primary group-hover:-translate-y-3 group-hover:shadow-premium relative overflow-hidden'>
                           <div className="absolute inset-0 bg-primary/5 group-hover:bg-white/0 transition-colors"></div>
-                          <img className="w-12 sm:w-16 relative z-10 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-all duration-500" src={item.image} alt={item.speciality} />
+                          <img className="w-12 sm:w-16 relative z-10 group-hover:scale-110 transition-all duration-500" src={item.image} alt={item.speciality} />
                         </div>
                         <p className='font-bold text-slate-700 group-hover:text-primary transition-colors tracking-tight uppercase text-xs'>{item.speciality}</p>
                       </Link>
@@ -58,4 +58,4 @@ const SpecialityMenu = () => {
 }
 
 export default SpecialityMenu
-
+

@@ -47,7 +47,7 @@ const DoctorProfile = () => {
         <h1 className="text-2xl font-bold text-slate-800 tracking-tight uppercase">My Profile</h1>
         <button 
           onClick={isEdit ? updateProfile : () => setIsEdit(true)} 
-          className={`btn-admin flex items-center gap-2 ${isEdit ? 'bg-green-600 hover:bg-green-700' : ''}`}
+          className={`btn-admin flex items-center gap-2 cursor-pointer ${isEdit ? 'bg-green-600 hover:bg-green-700' : ''}`}
         >
           {isEdit ? 'Save Changes' : 'Edit Profile'}
         </button>
@@ -160,4 +160,4 @@ const DoctorProfile = () => {
   )
 }
 
-export default DoctorProfile;
+export default DoctorProfile;

@@ -101,8 +101,7 @@ const Dashboard = () => {
               </div>
               <p className="text-xl font-black text-slate-900 uppercase tracking-tight">Latest Bookings</p>
             </div>
-            <button className="text-primary font-bold text-xs uppercase tracking-widest hover:underline decoration-2 underline-offset-4">View All</button>
-          </div>
+            </div>
 
           <div className="divide-y divide-slate-50">
             {dashData.latestAppointments.map((item, index) => (

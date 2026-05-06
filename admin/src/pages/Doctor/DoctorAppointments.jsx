@@ -38,12 +38,7 @@ const DoctorAppointments = () => {
           <h1 className='text-3xl font-bold text-slate-900 tracking-tight'>Manage <span className="gradient-text">Appointments</span></h1>
           <p className='text-slate-500 font-medium text-sm mt-2'>Review and update your patient visits</p>
         </div>
-        <div className='flex items-center gap-6'>
-          <div className='bg-white px-5 py-2.5 rounded-xl border border-slate-100 shadow-sm flex items-center gap-3'>
-            <div className='w-2.5 h-2.5 rounded-full bg-primary animate-pulse'></div>
-            <p className='text-slate-600 font-bold text-xs uppercase tracking-widest'>{appointments?.length} Total Visits</p>
-          </div>
-        </div>
+        
       </div>
 
       <div className="bg-white rounded-[2rem] shadow-premium border border-slate-100 overflow-hidden">

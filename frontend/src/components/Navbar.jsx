@@ -63,12 +63,12 @@ const Navbar = () => {
             </div>
             <img className='w-2.5 opacity-40 transition-transform group-hover:rotate-180 group-hover:opacity-100' src={assets.dropdown_icon} alt="" />
             
-            <div className='absolute right-0 top-full pt-4 hidden group-hover:block z-50'>
-              <div className='min-w-64 bg-white/90 backdrop-blur-xl rounded-3xl shadow-premium border border-white/40 p-3 flex flex-col gap-1'>
-                <p onClick={() => navigate("/my-profile")} className='px-5 py-3 rounded-2xl hover:bg-primary-light hover:text-primary transition-all cursor-pointer font-bold text-slate-600'>My Profile</p>
-                <p onClick={() => navigate("/my-appointments")} className='px-5 py-3 rounded-2xl hover:bg-primary-light hover:text-primary transition-all cursor-pointer font-bold text-slate-600'>My Appointments</p>
+            <div className='absolute right-0 top-full pt-3 hidden group-hover:block z-50'>
+              <div className='min-w-56 bg-white rounded-2xl shadow-2xl border border-slate-100 p-2 flex flex-col'>
+                <p onClick={() => navigate("/my-profile")} className='px-5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-primary transition-all cursor-pointer font-bold text-slate-600 text-sm'>My Profile</p>
+                <p onClick={() => navigate("/my-appointments")} className='px-5 py-2.5 rounded-xl hover:bg-slate-50 hover:text-primary transition-all cursor-pointer font-bold text-slate-600 text-sm'>My Appointments</p>
                 <div className='h-px bg-slate-100 my-2 mx-2'></div>
-                <p onClick={logout} className='px-5 py-3 rounded-2xl hover:bg-rose-50 hover:text-rose-500 transition-all cursor-pointer font-bold text-slate-500'>Logout</p>
+                <p onClick={logout} className='px-5 py-2.5 rounded-xl hover:bg-rose-50 hover:text-rose-500 transition-all cursor-pointer font-bold text-slate-500 text-sm'>Logout</p>
               </div>
             </div>
           </div>
@@ -98,11 +98,12 @@ const Navbar = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className='fixed inset-0 z-[60] bg-white/95 backdrop-blur-xl md:hidden flex flex-col'
+              className='fixed inset-0 z-[100] bg-white md:hidden flex flex-col'
+              style={{ backgroundColor: '#ffffff' }}
             >
-              <div className='flex items-center justify-between px-8 py-8 border-b border-slate-50'> 
+              <div className='flex items-center justify-between px-8 py-8 border-b border-slate-50 bg-white'> 
                 <img className='w-40' src={assets.logo} alt="logo" />
-                <div onClick={() => setShowMenu(false)} className='w-10 h-10 flex items-center justify-center bg-slate-50 rounded-xl cursor-pointer'>
+                <div onClick={() => setShowMenu(false)} className='w-12 h-12 flex items-center justify-center bg-slate-50 rounded-2xl cursor-pointer'>
                   <img className='w-5' src={assets.cross_icon} alt="close" />
                 </div>
               </div>
@@ -139,4 +140,4 @@ export default Navbar
 
 
 
-
+

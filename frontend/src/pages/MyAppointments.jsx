@@ -129,10 +129,7 @@ const MyAppointments = () => {
           <h1 className='text-4xl font-black text-slate-900 tracking-tighter uppercase'>My <span className="gradient-text">Appointments</span></h1>
           <p className='text-slate-500 font-bold text-sm uppercase tracking-widest mt-2'>Manage and track your medical visits</p>
         </div>
-        <div className='flex items-center gap-2 bg-white px-4 py-2 rounded-2xl border border-slate-100 shadow-sm'>
-          <div className='w-2 h-2 rounded-full bg-emerald-500 animate-pulse'></div>
-          <p className='text-slate-600 font-bold text-xs uppercase tracking-tight'>{appointments.length} Scheduled</p>
-        </div>
+       
       </div>
 
       <motion.div 
@@ -245,4 +242,4 @@ const MyAppointments = () => {
   )
 }
 
-export default MyAppointments
+export default MyAppointments

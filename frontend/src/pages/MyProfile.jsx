@@ -88,19 +88,10 @@ const MyProfile = () => {
               ) : (
                 <h2 className='text-3xl font-bold text-slate-900 tracking-tight'>{userData.name}</h2>
               )}
-              <p className='text-slate-400 font-semibold uppercase tracking-widest text-[10px]'>Verified Patient Profile</p>
+          
             </div>
 
-            <div className='mt-10 pt-8 border-t border-slate-50 grid grid-cols-2 gap-4'>
-              <div className='text-center'>
-                <p className='text-xl font-bold text-slate-800'>12</p>
-                <p className='text-[10px] font-bold text-slate-400 uppercase tracking-widest'>Visits</p>
-              </div>
-              <div className='text-center border-l border-slate-50'>
-                <p className='text-xl font-bold text-slate-800'>03</p>
-                <p className='text-[10px] font-bold text-slate-400 uppercase tracking-widest'>Reports</p>
-              </div>
-            </div>
+          
 
             <div className='mt-10 flex flex-col gap-3'>
               {isEdit ? (
@@ -114,17 +105,6 @@ const MyProfile = () => {
                   <span className='group-hover:translate-x-1 transition-transform'>→</span>
                 </button>
               )}
-            </div>
-          </div>
-
-          <div className='mt-8 bg-gradient-to-br from-primary to-indigo-600 rounded-[2rem] p-8 text-white relative overflow-hidden shadow-xl shadow-primary/20'>
-            <p className='text-[10px] font-bold uppercase tracking-widest opacity-80 mb-1'>Health Score</p>
-            <div className='flex items-end gap-2 mb-4'>
-              <p className='text-4xl font-bold'>85%</p>
-              <p className='text-xs font-medium mb-1 opacity-80'>Excellent Condition</p>
-            </div>
-            <div className='w-full bg-white/20 h-2 rounded-full overflow-hidden'>
-              <motion.div initial={{ width: 0 }} animate={{ width: '85%' }} transition={{ duration: 1 }} className='bg-white h-full rounded-full'></motion.div>
             </div>
           </div>
         </motion.div>

@@ -21,9 +21,6 @@ const Header = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
             >
-              <span className="bg-white/10 backdrop-blur-md text-white/90 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-[0.2em] border border-white/10 mb-6 inline-block">
-                Trust & Care First
-              </span>
               <h1 className='text-5xl md:text-6xl lg:text-7xl text-white font-extrabold leading-[1.1] tracking-tighter'>
                   Book Appointment <br /> <span className="text-white/70">With Trusted Doctors</span>
               </h1>
@@ -77,4 +74,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header

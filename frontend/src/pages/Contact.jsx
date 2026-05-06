@@ -39,7 +39,7 @@ const Contact = () => {
           className='flex flex-col gap-10 items-start justify-center'
         >
           <div className="space-y-6">
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight uppercase">Our Office</h2>
+            
             <div className="space-y-4">
               <div className='flex items-center gap-4 group'>
                 <div className="w-12 h-12 bg-primary/5 rounded-2xl flex items-center justify-center text-xl group-hover:bg-primary group-hover:text-white transition-all duration-300">📞</div>
@@ -57,18 +57,6 @@ const Contact = () => {
               </div>
             </div>
           </div>
-          
-          <div className="space-y-6 pt-10 border-t border-slate-100 w-full">
-            <h2 className="text-3xl font-black text-slate-900 tracking-tight uppercase">Careers</h2>
-            <p className="text-slate-500 font-medium max-w-sm leading-relaxed">Learn more about our teams and job openings across the globe.</p>
-            <motion.button 
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(0,0,0,0.05)" }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-outline px-12 py-5"
-            >
-              Explore Jobs
-            </motion.button>
-          </div>
         </motion.div>
       </div>
     </motion.div>
@@ -76,4 +64,4 @@ const Contact = () => {
 }
 
 export default Contact
-
+
