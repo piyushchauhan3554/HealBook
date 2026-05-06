@@ -103,20 +103,20 @@ const DoctorAppointments = () => {
                 ) : (
                   <div className="flex items-center gap-2">
                     <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileTap={{ scale: 0.9 }}
                       onClick={() => cancelAppointment(item._id)} 
-                      className="w-10 h-10 bg-rose-50 text-rose-500 rounded-xl flex items-center justify-center cursor-pointer hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+                      className="w-10 h-10 bg-rose-100 text-rose-800 rounded-xl flex items-center justify-center cursor-pointer shadow-sm"
+                      title="Cancel Appointment"
                     >
-                      <img className="w-4 group-hover:brightness-0 group-hover:invert" src={assets.cancel_icon} alt="cancel" />
+                      <img className="w-5" src={assets.cancel_icon} alt="cancel" />
                     </motion.div>
                     <motion.div 
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
+                      whileTap={{ scale: 0.9 }}
                       onClick={() => completeAppointment(item._id)} 
-                      className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center cursor-pointer hover:bg-emerald-500 hover:text-white transition-all shadow-sm"
+                      className="w-10 h-10 bg-emerald-100 text-emerald-800 rounded-xl flex items-center justify-center cursor-pointer shadow-sm"
+                      title="Complete Appointment"
                     >
-                      <img className="w-4 group-hover:brightness-0 group-hover:invert" src={assets.tick_icon} alt="complete" />
+                      <img className="w-5" src={assets.tick_icon} alt="complete" />
                     </motion.div>
                   </div>
                 )}
