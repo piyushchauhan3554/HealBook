@@ -1,108 +1,177 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DoctorContext } from "../../context/DoctorContext";
-import { useEffect } from "react";
 import { assets } from "../../assets/assets_admin/assets";
 import { AppContext } from "../../context/AppContext";
+import { motion } from "framer-motion";
 
 const DoctorDashboard = () => {
-  const { getDashboardData, dashData, dToken ,completeAppointment,cancelAppointment} = useContext(DoctorContext);
+  const { getDashboardData, dashData, dToken, completeAppointment, cancelAppointment } = useContext(DoctorContext);
   const { currency, changeDateFormat } = useContext(AppContext);
+
   useEffect(() => {
     if (dToken) {
       getDashboardData();
     }
   }, [dToken]);
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  }
+
+  const itemAnim = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  }
+
   return (
     dashData && (
-      <div className="m-5">
-        <div className="flex flex-wrap gap-3">
-          <div className="flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all">
-            <img className="w-14" src={assets.earning_icon} alt="" />
-            <div>
-              <p className="text-xl font-semibold text-gray-600">
-                {currency}
-                {dashData.earnings}
-              </p>
-              <p className="text-gray-400">Earnings</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all">
-            <img className="w-14" src={assets.appointments_icon} alt="" />
-            <div>
-              <p className="text-xl font-semibold text-gray-600">
-                {dashData.totalAppointments}
-              </p>
-              <p className="text-gray-400">Appointments</p>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all">
-            <img className="w-14" src={assets.patients_icon} alt="" />
-            <div>
-              <p className="text-xl font-semibold text-gray-600">
-                {dashData.totalPatients}
-              </p>
-              <p className="text-gray-400">Patients</p>
-            </div>
-          </div>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="p-8 w-full max-w-7xl mx-auto"
+      >
+        <div className="mb-10">
+          <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Doctor <span className="gradient-text">Dashboard</span></h1>
+          <p className="text-slate-500 font-medium text-sm mt-2">Welcome back! Here's a quick overview of your practice today.</p>
         </div>
 
-        <div className="bg-white">
-          <div className="flex items-center gap-2.5 px-4 py-4 mt-10 rounded-t border">
-            <img src={assets.list_icon} />
-            <p className="font-semibold">Latest Booking</p>
+        <motion.div 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {/* Earnings Card */}
+          <motion.div variants={itemAnim} className="bg-white rounded-[2rem] p-8 shadow-premium border border-slate-100 group hover:-translate-y-2 transition-all duration-500">
+            <div className="flex items-center justify-between mb-6">
+              <div className="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center group-hover:bg-emerald-500 group-hover:text-white transition-all duration-500">
+                <img className="w-6 group-hover:brightness-0 group-hover:invert transition-all" src={assets.earning_icon} alt="" />
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Total Revenue</p>
+                <div className="flex items-center justify-end gap-1 text-emerald-500 font-bold text-xs mt-1">
+                  <span>+12.5%</span>
+                </div>
+              </div>
+            </div>
+            <p className="text-3xl font-bold text-slate-900 tracking-tight">{currency}{dashData.earnings}</p>
+            <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Earnings</p>
+          </motion.div>
+
+          {/* Appointments Card */}
+          <motion.div variants={itemAnim} className="bg-white rounded-[2rem] p-8 shadow-premium border border-slate-100 group hover:-translate-y-2 transition-all duration-500">
+            <div className="flex items-center justify-between mb-6">
+              <div className="w-14 h-14 bg-primary/5 rounded-2xl flex items-center justify-center group-hover:bg-primary group-hover:text-white transition-all duration-500">
+                <img className="w-6 group-hover:brightness-0 group-hover:invert transition-all" src={assets.appointments_icon} alt="" />
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Bookings</p>
+                <div className="flex items-center justify-end gap-1 text-primary font-bold text-xs mt-1">
+                  <span>+5 Today</span>
+                </div>
+              </div>
+            </div>
+            <p className="text-3xl font-bold text-slate-900 tracking-tight">{dashData.totalAppointments}</p>
+            <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Appointments</p>
+          </motion.div>
+
+          {/* Patients Card */}
+          <motion.div variants={itemAnim} className="bg-white rounded-[2rem] p-8 shadow-premium border border-slate-100 group hover:-translate-y-2 transition-all duration-500">
+            <div className="flex items-center justify-between mb-6">
+              <div className="w-14 h-14 bg-rose-50 rounded-2xl flex items-center justify-center group-hover:bg-rose-500 group-hover:text-white transition-all duration-500">
+                <img className="w-6 group-hover:brightness-0 group-hover:invert transition-all" src={assets.patients_icon} alt="" />
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Active Base</p>
+                <div className="flex items-center justify-end gap-1 text-rose-500 font-bold text-xs mt-1">
+                  <span>Registered</span>
+                </div>
+              </div>
+            </div>
+            <p className="text-3xl font-bold text-slate-900 tracking-tight">{dashData.totalPatients}</p>
+            <p className="text-slate-400 font-semibold text-xs uppercase tracking-widest mt-2">Patients</p>
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          variants={itemAnim}
+          initial="hidden"
+          animate="show"
+          transition={{ delay: 0.4 }}
+          className="mt-12 bg-white rounded-[2rem] shadow-premium border border-slate-100 overflow-hidden"
+        >
+          <div className="flex items-center justify-between px-8 py-6 border-b border-slate-50 bg-slate-50/30">
+            <div className="flex items-center gap-3">
+              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                <img className="w-4 brightness-0 invert" src={assets.list_icon} alt="" />
+              </div>
+              <h2 className="text-lg font-bold text-slate-900 tracking-tight">Latest Bookings</h2>
+            </div>
+            <button className="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline cursor-pointer">View All</button>
           </div>
 
-          <div className="pt-4 border border-t-0">
+          <div className="px-4 py-2">
             {dashData.latestAppointments.map((item, index) => (
-              <div
-                className="flex items-center px-6 py-3 gap-3 hover:bg-gray-100"
+              <motion.div
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5 + (index * 0.1) }}
+                className="flex items-center px-6 py-5 gap-6 hover:bg-slate-50/80 rounded-2xl transition-all group"
                 key={index}
               >
-                <img
-                  className="rounded-full w-10 h-10 object-cover"
-                  src={item.userData.image}
-                  alt=""
-                />
-                <div className="flex-1 text-sm">
-                  <p className="text-gray-800 font-medium">
+                <div className="w-12 h-12 rounded-xl overflow-hidden border-2 border-white shadow-sm shrink-0">
+                  <img className="w-full h-full object-cover" src={item.userData.image} alt="" />
+                </div>
+                
+                <div className="flex-1">
+                  <p className="text-base font-bold text-slate-900 group-hover:text-primary transition-colors tracking-tight">
                     {item.userData.name}
                   </p>
-                  <p className="text-gray-600">
-                    {changeDateFormat(item.slotDate)}
-                  </p>
-                </div>
-                {item.cancelled ? (
-                  <p className="text-red-500 text-xs font-medium">Cancelled</p>
-                ) : item.isCompleted ? (
-                  <p className="text-green-500 text-xs font-medium">
-                    Completed
-                  </p>
-                ) : (
-                  <div className="flex items-center">
-                    <img
-                      onClick={() => cancelAppointment(item._id)}
-                      className="w-10 cursor-pointer"
-                      src={assets.cancel_icon}
-                      alt=""
-                    />
-                    <img
-                      onClick={() => completeAppointment(item._id)}
-                      className="w-10 cursor-pointer"
-                      src={assets.tick_icon}
-                      alt=""
-                    />
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <p className="text-slate-400 font-medium text-[11px]">
+                      {changeDateFormat(item.slotDate)} at <span className="text-slate-700 font-semibold">{item.slotTime}</span>
+                    </p>
                   </div>
-                )}
-              </div>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  {item.cancelled ? (
+                    <span className="px-3 py-1 bg-rose-50 text-rose-500 text-[10px] font-bold uppercase tracking-widest rounded-lg">Cancelled</span>
+                  ) : item.isCompleted ? (
+                    <span className="px-3 py-1 bg-emerald-50 text-emerald-600 text-[10px] font-bold uppercase tracking-widest rounded-lg">Completed</span>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <motion.div 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => cancelAppointment(item._id)}
+                        className="w-10 h-10 bg-rose-50 text-rose-500 rounded-xl flex items-center justify-center cursor-pointer hover:bg-rose-500 hover:text-white transition-all shadow-sm"
+                      >
+                        <img className="w-4 opacity-70 group-hover:brightness-0 group-hover:invert transition-all" src={assets.cancel_icon} alt="cancel" />
+                      </motion.div>
+                      <motion.div 
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => completeAppointment(item._id)}
+                        className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center cursor-pointer hover:bg-emerald-500 hover:text-white transition-all shadow-sm"
+                      >
+                        <img className="w-4 opacity-70 group-hover:brightness-0 group-hover:invert transition-all" src={assets.tick_icon} alt="complete" />
+                      </motion.div>
+                    </div>
+                  )}
+                </div>
+              </motion.div>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     )
   );
 };
 
 export default DoctorDashboard;
+
