@@ -88,7 +88,7 @@ HealBook/
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/your-username/healbook.git
+git clone https://github.com/piyushchauhan3554/HealBook.git
 ```
 
 ---
